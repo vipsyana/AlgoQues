@@ -2,11 +2,15 @@
     CONSOLE APPLICATION : Practice Project Overview
 ========================================================================
 
+Goal: complete 100 examples
+
+
+/////////////////////////////////////////////////////////////////////////////
+
 AppWizard has created this Practice application for you.
 
 This file contains a summary of what you will find in each of the files that
 make up your Practice application.
-
 
 Practice.vcxproj
     This is the main project file for VC++ projects generated using an Application Wizard.
@@ -22,7 +26,7 @@ Practice.vcxproj.filters
     "Source Files" filter).
 
 Practice.cpp
-    This is the main application source file.
+    This is the main application source file. Main function entry. I will be running test code from this file. 
 
 /////////////////////////////////////////////////////////////////////////////
 Other standard files:
