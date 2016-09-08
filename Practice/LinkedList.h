@@ -58,6 +58,10 @@ public:
 class LinkedList {
     Node *start;
     Node *end;
+	void GenerateDefaultLinkedList(void);
+	void Init();
+
+
 
 public: 
 
@@ -67,12 +71,23 @@ public:
 		GenerateDefaultLinkedList();
     }
 
+	//returns valid pointer of kth node from start.
+	Node* GetKthNode(int k);
+
 	void DeleteNode(Node *currentNode);
 	void Clear();
-	void GenerateDefaultLinkedList(void);
+
 	void InsertNodeAtStart(Node *newNode);
 	void InsertNodeAtEnd(Node *newNode);
 	void DisplayLinkedList(void);
 
 	void DeleteDuplicate(void);
+	
+	//reverse existing linked list till
+	void Reverse();
+
+	//reverses linked list from start to end pointer and changes pointer value at end
+	void Reverse(  Node  *st, Node *end);
+
+	void ReverseKNodes(int k);
 };

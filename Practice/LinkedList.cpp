@@ -2,6 +2,11 @@
 #include "stdafx.h"
 #include "LinkedList.h"
 
+void LinkedList::Init() {
+	Clear();
+	GenerateDefaultLinkedList();
+}
+
 void LinkedList::GenerateDefaultLinkedList()
 {
 	InsertNodeAtEnd(new Node(10));
@@ -11,6 +16,12 @@ void LinkedList::GenerateDefaultLinkedList()
 	InsertNodeAtEnd(new Node(45));
 	InsertNodeAtEnd(new Node(30));
 	InsertNodeAtEnd(new Node(5));
+	InsertNodeAtEnd(new Node(23));
+	InsertNodeAtEnd(new Node(45));
+	InsertNodeAtEnd(new Node(11));
+	InsertNodeAtEnd(new Node(88));
+	InsertNodeAtEnd(new Node(79));
+	InsertNodeAtEnd(new Node(2));
 	DisplayLinkedList();
 }
 
@@ -74,6 +85,19 @@ void LinkedList::DeleteNode(Node *t) {
 	t = NULL;
 }
 
+//node starts from 1st
+Node* LinkedList::GetKthNode(int k) {
+
+	int count = 0;
+	Node *i = start;
+	while (i != NULL) {
+		count++;
+		if (count == k)
+			return i;
+
+		i = i->GetNext();
+	}
+}
 //This function deletes aall nodes of the linked list
 void LinkedList::Clear() {
 	if (start !=NULL && end != NULL) { 
@@ -141,4 +165,77 @@ void LinkedList::DeleteDuplicate() {
 	}
 
 	DisplayLinkedList();
+}
+
+void LinkedList::Reverse() {
+
+	Init();
+
+	cout << endl << "Before : LinkedList::Reverse ";
+	DisplayLinkedList();
+
+	Node *prev = NULL, *i = start,*t=NULL;
+
+	while (i != NULL) {		
+		t = i->GetNext();
+		i->SetNext(prev);
+		prev = i;
+		i = t;
+	}
+	start = prev;
+
+	cout << endl << "After: LinkedList::Reverse ";
+	DisplayLinkedList();
+}
+
+void LinkedList::Reverse( Node *st,  Node *end) {
+	
+	Node*prev = end->GetNext(), *i = st, *t=NULL;
+
+	cout << "";
+	while ( i != end ) {
+
+		t = i->GetNext();
+		i->SetNext(prev);
+		prev = i;
+		i = t;
+	}
+
+	i->SetNext(prev);
+}
+
+
+void LinkedList::ReverseKNodes(int k=2) {
+
+	Init();
+	cout << endl << "Before:: LinkedList::ReverseKNodes ";
+	DisplayLinkedList();
+	int count = 0;
+
+	Node *i = start,*t=start;
+	Node* prev = NULL;
+	while (i != NULL && t!=NULL) {
+		
+		count++;
+		//ToDo: Set pointers for next 
+		if (count == k) {
+			if (t == start)
+				start = i;
+			Node *nn = i->GetNext();
+			Reverse(t, i);
+			count = 0;
+			
+			if (nn == NULL) break;
+			t = nn;
+			i->SetNext(nn);
+		} 
+		prev = i;
+		i = i->GetNext();
+	}
+	
+	end = prev;
+
+	cout << endl << "After:: LinkedList::ReverseKNodes ";
+	DisplayLinkedList();
+
 }

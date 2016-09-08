@@ -26,7 +26,9 @@ void RunGraph() {
 
 void RunLinkedList() {
 	LinkedList list;
-	list.DeleteDuplicate();
+	//list.DeleteDuplicate();
+	list.Reverse();
+	list.ReverseKNodes(2);
 }
 
 int main()
@@ -35,6 +37,7 @@ int main()
 	
 	RunLinkedList();
 
+	cout << endl << endl << endl << "....... Press any key to exit program";
 	_getch();
 	return 0;
 }
