@@ -14,6 +14,18 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+#Debug files and folder
+Debug/
+ipch/
+.vs/
+
+*VC*.*db
+*.obj
+*.pdb
+*.ibj
+
+
+
 # Windows shortcuts
 *.lnk
 
