@@ -67,9 +67,12 @@ public:
 		GenerateDefaultLinkedList();
     }
 
+	void DeleteNode(Node *currentNode);
+	void Clear();
 	void GenerateDefaultLinkedList(void);
 	void InsertNodeAtStart(Node *newNode);
 	void InsertNodeAtEnd(Node *newNode);
 	void DisplayLinkedList(void);
 
+	void DeleteDuplicate(void);
 };

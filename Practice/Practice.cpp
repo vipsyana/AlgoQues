@@ -26,11 +26,13 @@ void RunGraph() {
 
 void RunLinkedList() {
 	LinkedList list;
+	list.DeleteDuplicate();
 }
 
 int main()
 {
-	RunGraph();
+	//RunGraph();
+	
 	RunLinkedList();
 
 	_getch();
