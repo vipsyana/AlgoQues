@@ -5,11 +5,7 @@
 **/
 
 #pragma once
-#include <iostream>
-#include <list>
-
-using namespace std;
-
+#include "stdafx.h"
 
 /*
 Graph is representated by simply list
@@ -41,4 +37,5 @@ public:
 
     //DFS using recursiving implementation
     void DFS_Rec(int s);
+
 };

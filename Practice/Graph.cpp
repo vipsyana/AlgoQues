@@ -9,7 +9,7 @@ void Graph::BFS(int s)
     for (int i = 0; i < N; i++) {
         v[i] = false; // node is not yet visited.
     }
-    cout << "BFS = ";
+    cout << "Graph::BFS = ";
 
     list<int> q;
     list<int>::iterator itr;
@@ -29,7 +29,7 @@ void Graph::BFS(int s)
             }
         }
     }
-    cout << endl << "....Done";
+    cout << endl << "Graph::BFS : Done";
 }
 
 void Graph::DFSUtil(int s, bool *v) {
@@ -46,7 +46,7 @@ void Graph::DFSUtil(int s, bool *v) {
 
 void Graph::DFS_Rec(int s) {
 
-    cout << endl<< "DFS rec version.."<<endl;
+    cout << endl<< "Graph::DFS_Rec version.."<<endl;
     bool *v = new bool[N];
     for (int i = 0; i < N; i++) {
         v[i] = false;
@@ -62,7 +62,7 @@ void Graph::DFS_Stack(int s) {
     for (int i = 0; i < N; i++)
         visited[i] = false;
 
-    cout << "DFS (stack version)" << endl;
+    cout << "Graph::DFS_Stack (stack version)" << endl;
 
     stack<int> st;
     st.push(s);

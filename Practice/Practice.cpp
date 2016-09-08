@@ -3,53 +3,37 @@
 
 #include "stdafx.h"
 #include "Graph.h"
-#include <queue>
+#include "DataStructures.h"
+#include "LinkedList.h"
 
-class greater {
-public:
-    bool operator()(int a, int b) {
-        return a > b;
-    }
-};
+void RunDS() {
 
-typedef bool(*CompareFun)(int, int);
-
-bool greatFunction(int a, int b) {
-    return a > b;
+	max_heap();
 }
-//understanding max heap data structure
-void max_heap() {
-    //priority_queue<int, vector<int>, greater>q; 
-    priority_queue<int, vector<int>, CompareFun>q(greatFunction);
-    q.push(5);    
-    q.push(2);
-    q.push(15);
-    q.push(5);
-    q.push(55);
 
-    cout << "Priority content = ";
-    while (!q.empty()) {
-        cout << q.top() <<  ", ";
-        q.pop();
-    }
+void RunGraph() {
+	Graph g(4);
+	g.addEdge(0, 1);
+	g.addEdge(1, 2);
+	g.addEdge(2, 3);
+	g.addEdge(3, 0);
+	g.addEdge(3, 2);
+
+	g.BFS(3);
+	g.DFS_Stack(3);
+	g.DFS_Rec(3);
+}
+
+void RunLinkedList() {
+	LinkedList list;
 }
 
 int main()
 {
-    max_heap();
-    list<int> mylist;
+	RunGraph();
+	RunLinkedList();
 
-    Graph g(4);
-    g.addEdge(0, 1);
-    g.addEdge(1, 2); 
-    g.addEdge(2, 3);
-    g.addEdge(3, 0);    
-    g.addEdge(3, 2);
-
-    g.BFS(3);
-    g.DFS_Stack(3);
-    g.DFS_Rec(3);
-
-    return 0;
+	_getch();
+	return 0;
 }
 
