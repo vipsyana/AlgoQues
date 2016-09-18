@@ -87,7 +87,7 @@ public:
 	void Reverse();
 
 	//reverses linked list from start to end pointer and changes pointer value at end
-	void Reverse(  Node  *st, Node *end);
+	void Reverse(Node *st, Node *end);
 
 	void ReverseKNodes(int k);
 };
