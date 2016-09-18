@@ -26,9 +26,9 @@ void RunGraph() {
 
 void RunLinkedList() {
 	LinkedList list;
-	//list.DeleteDuplicate();
+	list.DeleteDuplicate();
 	list.Reverse();
-	list.ReverseKNodes(2);
+	list.ReverseKNodes(5);
 }
 
 int main()

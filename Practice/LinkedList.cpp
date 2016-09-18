@@ -174,34 +174,36 @@ void LinkedList::Reverse() {
 	cout << endl << "Before : LinkedList::Reverse ";
 	DisplayLinkedList();
 
-	Node *prev = NULL, *i = start,*t=NULL;
+	Reverse(start, end);
+	Node *t = start;
+	start = end;
+	end = start;
 
-	while (i != NULL) {		
-		t = i->GetNext();
-		i->SetNext(prev);
-		prev = i;
-		i = t;
-	}
-	start = prev;
+	//Following is traditional way of reversing linked list
+	//Node *prev = NULL, *i = start,*t=NULL;
+
+	//while (i != NULL) {		
+	//	t = i->GetNext();
+	//	i->SetNext(prev);
+	//	prev = i;
+	//	i = t;
+	//}
+	//start = prev;
 
 	cout << endl << "After: LinkedList::Reverse ";
 	DisplayLinkedList();
 }
 
-void LinkedList::Reverse( Node *st,  Node *end) {
+void LinkedList::Reverse(Node *st,  Node *end) {
 	
-	Node*prev = end->GetNext(), *i = st, *t=NULL;
+	Node*t1=st, *t2=end->GetNext(), *t3=NULL,*tend= end->GetNext();
 
-	cout << "";
-	while ( i != end ) {
-
-		t = i->GetNext();
-		i->SetNext(prev);
-		prev = i;
-		i = t;
-	}
-
-	i->SetNext(prev);
+	do {
+		t3 = t1->GetNext();
+		t1->SetNext(t2);
+		t2 = t1;
+		t1 = t3;
+	}while (t1!= tend);
 }
 
 
@@ -212,23 +214,40 @@ void LinkedList::ReverseKNodes(int k=2) {
 	DisplayLinkedList();
 	int count = 0;
 
-	Node *i = start,*t=start;
+	Node *i = start,*t=start,*prevSt=NULL;
 	Node* prev = NULL;
 	while (i != NULL && t!=NULL) {
 		
 		count++;
-		//ToDo: Set pointers for next 
 		if (count == k) {
+
 			if (t == start)
 				start = i;
-			Node *nn = i->GetNext();
-			Reverse(t, i);
-			count = 0;
 			
-			if (nn == NULL) break;
-			t = nn;
-			i->SetNext(nn);
-		} 
+			Node *nt = i->GetNext();
+			Reverse(t, i);
+
+			if (prevSt != NULL)
+				prevSt->SetNext(i);
+			prevSt = t;
+			
+			i = t;
+			
+			//This is ASSERT
+			if (t->GetNext() != nt)
+			{
+				//something went wrong in the reverse logic.
+			}
+
+			t = nt; // set new start
+		
+			count = 0;			
+			
+			if (i == NULL) 
+				break;
+			
+		}
+
 		prev = i;
 		i = i->GetNext();
 	}
@@ -237,5 +256,4 @@ void LinkedList::ReverseKNodes(int k=2) {
 
 	cout << endl << "After:: LinkedList::ReverseKNodes ";
 	DisplayLinkedList();
-
 }
