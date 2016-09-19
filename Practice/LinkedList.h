@@ -56,13 +56,13 @@ public:
 };
 
 class LinkedList {
-    Node *start;
+    
+	Node *start;
     Node *end;
+	
 	void GenerateDefaultLinkedList(void);
 	void Init();
-
-
-
+	
 public: 
 
     LinkedList() {
@@ -90,4 +90,14 @@ public:
 	void Reverse(Node *st, Node *end);
 
 	void ReverseKNodes(int k);
+
+	//using hash tables
+	void RemoveLoop1();
+
+	//using slow,fast pointers and comparing every node can be reached from node in the loop
+	void RemoveLoop2();
+
+	//using slow fast pointers detect loop. Find size of loop (K). Use pointer at Kth.
+	void RemoveLoop3();
+
 };
