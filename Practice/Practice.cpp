@@ -29,6 +29,8 @@ void RunLinkedList() {
 	list.DeleteDuplicate();
 	list.Reverse();
 	list.ReverseKNodes(5);
+	
+	list.RemoveLoop2();
 }
 
 int main()

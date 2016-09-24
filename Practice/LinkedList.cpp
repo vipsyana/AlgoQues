@@ -55,7 +55,6 @@ void LinkedList::InsertNodeAtEnd(Node *newNode)
 	end = newNode;
 }
 
-
 void LinkedList::DisplayLinkedList() 
 {
 	cout << endl << "Linked list = ";
@@ -206,6 +205,56 @@ void LinkedList::Reverse(Node *st,  Node *end) {
 	}while (t1!= tend);
 }
 
+void LinkedList::RemoveLoop2() {
+	
+	/*
+	 Logic: 
+		1. find the loop in the linked list
+			Use slow, fast pointer approach.
+			Slow pointer - moves one node at a time
+			Fast Pointer - moves two pointers poistion. next->next
+			both pointers start condition is head of the linked list
+		2. Once pointer in the loop detected call it as inLoop
+			check for all nodes in the linked list that if every node can be reached from the inLoop node
+			if not reached, then move to next node till 
+	*/
+
+	Init();
+
+	cout << endl << "LinkedList::RemoveLoop2 - loop created at 4th node";
+	//Create loop from end to 4th node
+	end->SetNext(GetKthNode(4));
+
+	Node *i=start, *j=start;
+
+	do {
+		i = i->GetNext();
+		j = (j->GetNext())->GetNext();
+	} while (i != j);
+
+	cout << endl << "LinkedList::RemoveLoop2 - node inside the loop detected - " << i->GetData();
+	//at this point, i == j and inside the loop.
+	Node* inLoop = i;
+	j = start;
+	bool found = false;
+	while (1) {
+		for (i = inLoop; i->GetNext() != inLoop; i = i->GetNext())
+		{
+			if (i->GetNext() == j)
+			{
+				//found end of the linked list and start of the loop.
+				cout << endl << "LinkedList::RemoveLoop2 - End of loop detected at " << i->GetData();
+				i->SetNext(NULL);
+				found = true;
+				break;
+			}
+		}
+		if (found) break;
+		j = j->GetNext();
+	}
+
+	DisplayLinkedList();
+}
 
 void LinkedList::ReverseKNodes(int k=2) {
 
